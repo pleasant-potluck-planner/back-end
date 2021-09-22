@@ -51,23 +51,9 @@ async function checkIfUserExists (req, res, next) {
     }
 }
 
-function restricted (req, res, next) {
-    const token = req.headers.authorization
-    jwt.verify(token, JWT_SECRET, (err, decoded) => {
-        if (err) {
-            res.redirect(300,'/api/auth/login')
-        } else {
-            req.decodedToken = decoded
-            next()
-        }
-    })
-    
-}
-
 module.exports = {
     checkUsernameAndPassword,
     checkIfUsernameIsFree,
     checkUsernameLength,
-    checkIfUserExists,
-    restricted
+    checkIfUserExists
 }

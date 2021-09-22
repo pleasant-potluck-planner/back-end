@@ -1,5 +1,9 @@
 const db = require('../../data/db-config')
 
+const getPotluckById = potluck_id => {
+  return db('potlucks').where('potluck_id', potluck_id)
+}
+
 const getPotlucksByOrganizer = user_id => {
   /*
   This query gives necessary info to return proper shape for all potlucks organized by
@@ -92,6 +96,7 @@ const insertPotluck = async potluck => {
 }
 
 module.exports = {
+  getPotluckById,
   getPotlucksByOrganizer,
   getPotlucksIfInvited,
   insertPotluck

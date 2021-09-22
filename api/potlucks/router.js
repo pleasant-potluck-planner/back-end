@@ -1,6 +1,13 @@
 const router = require('express')
   .Router()
 const Potluck = require('./model')
+const restricted = require('../middleware/restricted')
+
+router.get('/:potluck_id', (req, res, next) => {
+  Potluck.getPotluckById(req.params.potluck_id)
+    .then(potluck => res.json(potluck))
+    .catch(next)
+})
 
 router.get('/:user_id', (req, res, next) => {
   res.json([
@@ -42,6 +49,35 @@ router.get('/:user_id', (req, res, next) => {
   ])
 })
 
-router.get('/user_id/invited')
+router.post('/', (req, res, next) => {
+  res.status(201)
+    .json({
+      potluck_id: 6,
+      potluck_name: 'Taco Tuesday',
+      potluck_date: '2022-04-20',
+      potluck_time: '16:20:00',
+      potluck_location: 'Nowhere'
+    })
+})
+
+router.put('/:potluck_id', (req, res, next) => {
+  res.json({
+    potluck_id: req.params.potluck_id,
+    potluck_name: req.body.potluck_name || undefined,
+    potluck_date: req.body.potluck_date || undefined,
+    potluck_time: req.body.potluck_time || undefined,
+    potluck_location: req.body.potluck_location || undefined
+  })
+})
+
+router.delete('/:potluck_id', (req, res, next) => {
+  res.status(200)
+    .json({message: `potluck with id ${req.params.potluck_id} successfully deleted`})
+})
+
+router.delete('/:potluck_id/items/:item_id', (req, res, next) => {
+  res.status(200)
+    .json({message: `item with id ${req.params.item_id} has been removed from potluck with id ${req.params.potluck_id}`})
+})
 
 module.exports = router
