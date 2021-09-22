@@ -4,6 +4,7 @@ const cors = require('cors')
 const morgan = require('morgan')
 
 const potlucksRouter = require('./potlucks/router')
+const authRouter = require('./auth/router')
 
 const server = express()
 
@@ -12,6 +13,7 @@ server.use(helmet())
 server.use(cors())
 server.use(morgan('dev'))
 
+server.use('/api', authRouter)
 server.use('/api/potlucks', potlucksRouter)
 
 server.get('*',
