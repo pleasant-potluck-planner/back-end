@@ -24,7 +24,7 @@ exports.up = async (knex) => {
         .onUpdate("RESTRICT")
     })
     .createTable('users_potlucks', user_potluck => {      
-      user_potluck.boolean('guest').defaultTo(0) //if 1: guest confirmed 
+      user_potluck.boolean('guest').defaultTo(false)
       user_potluck.integer('user_id')
         .notNullable()
         .references('user_id')
