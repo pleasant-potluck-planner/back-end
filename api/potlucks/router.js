@@ -75,7 +75,7 @@ router.delete('/:potluck_id', (req, res, next) => {
     .json({message: `potluck with id ${req.params.potluck_id} successfully deleted`})
 })
 
-router.delete('/:potluck_id/food/:item_id', (req, res, next) => {
+router.delete('/:potluck_id/items/:item_id', (req, res, next) => {
   res.status(200)
     .json({message: `item with id ${req.params.item_id} has been removed from potluck with id ${req.params.potluck_id}`})
 })
