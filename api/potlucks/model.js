@@ -1,39 +1,23 @@
 const db = require('../../data/db-config')
 
 const getPotluckById = potluck_id => {
-  return db('potlucks').where('potluck_id', potluck_id)
+  return db('potlucks')
+    .where('potluck_id', potluck_id)
 }
 
 const getPotlucksByOrganizer = user_id => {
-  /*
-  This query gives necessary info to return proper shape for all potlucks organized by
-   a particular user
+  // todo - need to pull item data and hammer into desired shape
+  const dataGlob = db('potlucks as p')
+    .leftJoin(function () {
+      this.select('u.user_id', 'u.user_name')
+        .from('users as u')
+        .as('u')
+    }, {'u.user_id': 'p.user_id'})
+    .where('p.user_id', user_id)
 
-  select u.user_name as organizer, p.user_id, p.potluck_id, p.potluck_name, p.potluck_location, p.potluck_time, p.potluck_date, pi.item_name, pi.user_name as guestBringing
-  from potlucks p
-  left join (
-    select u2.user_id, u2.user_name
-    from users u2
-  ) as u
-    on u.user_id = p.user_id
-  left join (
-    select *
-    from potlucks_items pi2
-    left join (
-      select *
-      from items i3
-    ) as i2
-    on i2.item_id = pi2.item_id
-    left join (
-      select u3.user_name, u3.user_id
-      from users u3
-    ) as u2
-    on u2.user_id = pi2.user_id
-  ) as pi
-    on pi.potluck_id = p.potluck_id
-  where p.user_id = 1;
-  group by pi.potluck_id
+  return dataGlob
 
+/*
   Shape desired:
 [
   {

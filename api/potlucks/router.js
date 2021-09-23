@@ -9,7 +9,10 @@ router.get('/:potluck_id', (req, res, next) => {
     .catch(next)
 })
 
-router.get('/:user_id', (req, res, next) => {
+router.get('/user/:user_id', (req, res, next) => {
+  // Potluck.getPotlucksByOrganizer(req.params.user_id)
+  //   .then(data => res.json(data))
+  //   .catch(next)
   res.json([
     {
       organizer: 'John',
@@ -50,13 +53,14 @@ router.get('/:user_id', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
+  let temp = 10
   res.status(201)
     .json({
-      potluck_id: 6,
-      potluck_name: 'Taco Tuesday',
-      potluck_date: '2022-04-20',
-      potluck_time: '16:20:00',
-      potluck_location: 'Nowhere'
+      potluck_id: temp++,
+      potluck_name: req.body.potluck_name || undefined,
+      potluck_date: req.body.potluck_date || undefined,
+      potluck_time: req.body.potluck_time || undefined,
+      potluck_location: req.body.potluck_location || undefined
     })
 })
 
