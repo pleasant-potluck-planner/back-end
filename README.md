@@ -18,7 +18,7 @@ Stores users, potlucks, user organizing the potluck, users attending, food items
     
 ## Request / Response Shapes
 #### /api/auth
-**POST /api/auth/register**
+**POST /api/register**
 ```es6
 {
       user_id: 5
@@ -26,7 +26,7 @@ Stores users, potlucks, user organizing the potluck, users attending, food items
       user_password: '1234' // returned password will be encrypted and will look like LOIDSFSDJFB83274323JD once db is fully hooked up
 }
 ```
-**POST /api/auth/login**
+**POST /api/login**
 ```es6
 {
       token: OISKBVOIKSLJNDFBNSUIODBF // this is not a valid token. Response will have a valid JWT
