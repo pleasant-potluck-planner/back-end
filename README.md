@@ -7,7 +7,8 @@ Stores users, potlucks, user organizing the potluck, users attending, food items
 ## Endpoints
     | Method | URL                            | Description                                                         |
     | ------ | ------------------------------ | ----------------------------------------------------------------    |
-    | GET    | /api/potlucks/:user_id         | Returns array of objects with potlucks organized by user.           |
+    | GET    | /api/potlucks/potluck_id       | Returns an object with the potluck matching id                      |
+    | GET    | /api/potlucks/user/:user_id    | Returns array of objects with potlucks organized by user.           |
     | POST   | /api/potlucks                  | Returns an object with the new potluck.                             |
     | PUT    | /api/potlucks/:potluck_id      | Returns an object with the updated potluck.                         |
     | DELETE | /api/potlucks/:potluck_id      | Returns a 200 success message.                                      |
@@ -32,7 +33,19 @@ Stores users, potlucks, user organizing the potluck, users attending, food items
 }
 ```
 #### /api/potlucks
-**GET /api/potlucks/:user_id**
+**GET /api/potlucks/:potluck_id**
+```es6
+// Response Object
+{
+      "potluck_date": "2022-02-10T08:00:00.000Z",
+      "potluck_id": 1,
+      "potluck_location": "John's house",
+      "potluck_name": "John's potluck",
+      "potluck_time": "18:00:00"
+      "user_id": 1
+}
+```
+**GET /api/potlucks/user/:user_id**
 ```es6
 // Response Array
 [
