@@ -5,16 +5,16 @@
 Stores users, potlucks, user organizing the potluck, users attending, food items requested, and if a user is bringing that item.
 
 ## Endpoints
-    | Method | URL                            | Description                                                         |
-    | ------ | ------------------------------ | ----------------------------------------------------------------    |
-    | GET    | /api/potlucks/potluck_id       | Returns an object with the potluck matching id                      |
-    | GET    | /api/potlucks/user/:user_id    | Returns array of objects with potlucks organized by user.           |
-    | POST   | /api/potlucks                  | Returns an object with the new potluck.                             |
-    | PUT    | /api/potlucks/:potluck_id      | Returns an object with the updated potluck.                         |
-    | DELETE | /api/potlucks/:potluck_id      | Returns a 200 success message.                                      |
-    | DELETE | /api/potlucks/:potluck_id/food | Returns a 200 success message.                                      |
-    | POST   | /api/register                  | Returns an object with newly created user.                          |
-    | POST   | /api/login                     | Returns a 200 success message.                                      |
+    | Method | URL                                     | Description                                                        |
+    | ------ | --------------------------------------- | -----------------------------------------------------------------  |
+    | GET    | /api/potlucks/potluck_id                | Returns an object with the potluck matching id                     |
+    | GET    | /api/potlucks/user/:user_id             | Returns array of objects with potlucks organized by user.          |
+    | POST   | /api/potlucks                           | Returns an object with the new potluck.                            |
+    | PUT    | /api/potlucks/:potluck_id               | Returns an object with the updated potluck.                        |
+    | DELETE | /api/potlucks/:potluck_id               | Returns a 200 success message and deletes potluck                  |
+    | DELETE | /api/potlucks/:potluck_id/items/item_id | Returns a 200 success message and removes item from potluck        |
+    | POST   | /api/register                           | Returns an object with newly created user.                         |
+    | POST   | /api/login                              | Returns a 200 success message.                                     |
     
 ## Request / Response Shapes
 #### /api/auth
